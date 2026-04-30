@@ -112,10 +112,10 @@ module.exports = defineConfig({
   testDir: './tests',
 
   use: {
-    headless: false,
+    headless: true,
     launchOptions: {
-      slowMo: 1000
-    }
+      timeout: 1000, //slowMo
+    } 
   },
 
   projects: [
