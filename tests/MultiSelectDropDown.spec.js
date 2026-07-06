@@ -12,16 +12,16 @@ test('Handle dropdown list', async ({page}) => {
     // Assertions 
 
     // 1) Check number of option in dropdown
-    // const options = await page.locator('#colors option')
-    // await expect(options).toHaveCount(5);
+    const options = await page.locator('#colors option')
+    await expect(options).toHaveCount(5);
 
-    // 2) check number of options in fropdown using JS array
-    // const options = await page.$$('#colors option');
-    // console.log('Number of option',options.length)
-    // await expect(options.length).toBe(7);
+   // 2) check number of options in fropdown using JS array
+    const options = await page.$$('#colors option');
+    console.log('Number of option',options.length)
+    await expect(options.length).toBe(7);
 
     // 3) chek resence of the value in the dropdown
-    const content = await page.locator('#colors').textContent();
+    const content = await page.locator('#colors option')
     await expect(content.includes('Blues')).toBeFalsy();
     
     await page.waitForTimeout(5000); 

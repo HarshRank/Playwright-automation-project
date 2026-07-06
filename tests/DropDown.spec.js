@@ -4,7 +4,7 @@ const { test, expect } = require("@playwright/test");
 
 test("Handle Dropdown", async ({ page }) => {
 
-    await page.goto('https://testautomationpractice.blogspot.com/');
+    // await page.goto('https://testautomationpractice.blogspot.com/');
 
     // await page.locator('input[name="username"]').fill("Admin");
     // await page.locator('input[name="password"]').fill('admin123');

@@ -1,0 +1,23 @@
+const { chromium } = require('playwright');
+const { LoginPage } = require('./Page/LoginPage');
+const { HomePage } = require('./Page/HomePage');
+const { CartPage } = require('./Page/CartPage');
+(async () => {
+  const browser = await chromium.launch({ headless: true });
+  const page = await browser.newPage();
+  const login = new LoginPage(page);
+  const username = `playwright${Date.now()}`;
+  const password = 'Test@1234';
+  await login.gotoLoginPage();
+  await login.signUp(username, password);
+  await login.login(username, password);
+  const home = new HomePage(page);
+  await home.addProductToCart('Samsung galaxy s6');
+  await page.waitForTimeout(3000);
+  await home.gotoCart();
+  const cart = new CartPage(page);
+  const status = await cart.checkProductInCart('Samsung galaxy s6');
+  console.log('status', status);
+  console.log('cart body', await page.locator('body').textContent());
+  await browser.close();
+})();

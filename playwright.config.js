@@ -110,26 +110,22 @@ const { defineConfig } = require('@playwright/test');
 
 module.exports = defineConfig({
   testDir: './tests',
+  reporter: 'html',
+
 
   use: {
     headless: true,
+    //trace:'on',
+    // video:'on',
     launchOptions: {
-      timeout: 1000, //slowMo
-    } 
+      timeout: 60000,
+    }
   },
 
   projects: [
     {
       name: 'chromium',
       use: { browserName: 'chromium' },
-    },
-    {
-      name: 'firefox',
-      use: { browserName: 'firefox' },
-    },
-    {
-      name: 'webkit',
-      use: { browserName: 'webkit' },
     },
   ],
 });
